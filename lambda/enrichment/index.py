@@ -8,7 +8,6 @@ def handler(event, context):
 def format(event):
     records = []
     for record in event:
-        print(record)
         data = json.loads(record['body'])
         original_payload = json.loads(data['requestPayload']['Records'][0]['Sns']['Message'])
         topic_arn = data['requestPayload']['Records'][0]['Sns']['TopicArn']
@@ -28,5 +27,5 @@ def format(event):
                 'response_payload': response_payload, 
             }
         })
-    print(records)
+
     return records
